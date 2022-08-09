@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.MemoMapper">
+	<insert id="save">
+	insert into memo(content,created_date) values(#{content}, now())
+	</insert>
+	<select id="readAll" resultType="com.example.demo.domain.dto.MemoDto">
+	select * from memo
+	</select>
+	<update id="update">
+	update memo set content=#{content} where no &lt;= #{no}
+	</update>
+	<delete id="deleteById">
+	delete from memo where no=#{no}
+	</delete>
+	<select id="findBySearch" resultType="com.example.demo.domain.dto.MemoDto">
+		select * from memo where content like '%${search}%';
+	</select>
+</mapper>
